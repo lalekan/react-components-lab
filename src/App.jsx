@@ -2,6 +2,8 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import DisplayForecast from './WeatherForecast.jsx'
+import './WeatherForecast.css'
 
 const App = () => {
 
@@ -44,13 +46,23 @@ const App = () => {
   ];
   
   return (
-    <div className="weather">
-      <h2>Day of the Week</h2>
-      <img src="" alt="" />
-      <p><span>conditions: </span>current weather conditions</p>
-      <p><span>time: </span>time of day</p>
-    </div>
-
+    <>
+      <h1>Local Weather</h1>
+      <section>
+        <ul>
+          {weatherForecasts.map((weatherForecast, index)=> (
+            <DisplayForecast
+            key={index}
+            day={weatherForecast.day}
+            img={weatherForecast.img}
+            // imgAlt={weatherForecast.imgAlt}
+            conditions={weatherForecast.conditions}
+            time={weatherForecast.time}
+            />
+          ))}
+        </ul>
+      </section>
+    </>
   );
 }
 
